@@ -1,4 +1,4 @@
-FROM debian
+FROM debian:jessie
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -yq install \
@@ -7,5 +7,6 @@ ADD index.html /var/www/index.html
 
 EXPOSE 8080
 
-# Use shell syntax because I'm lazy/ Note that busybox's netcat is different:
-# http://www.busybox.net/downloads/BusyBox.html#nc
+ADD run.sh /run.sh
+RUN chmod 755 /*.sh
+CMD ["/run.sh"]
