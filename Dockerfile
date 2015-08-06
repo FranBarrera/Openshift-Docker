@@ -1,6 +1,8 @@
 FROM debian
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -yq install apt-get install apache2
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get -yq install \
+        apache2
 ADD index.html /var/www/index.html
 
 EXPOSE 8080
